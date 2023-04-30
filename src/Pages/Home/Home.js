@@ -12,7 +12,7 @@ import catImg4 from "../../Assets/Images/cat-img-4.png";
 import Card from "../../Components/Card/Card.js";
 import TestimonialCard from "../../Components/TestimonialCard/TestimonialCard.js";
 // import userImg from "../../Assets/Images/Ellipse 6.png";
-// import star from "../../Assets/Images/Star.png";
+import Stars from "../../Assets/Images/Star.png";
 import bread from "../../Assets/Images/bread.png";
 import arrow from "../../Assets/Images/arrow.png";
 import { FiTruck } from "react-icons/fi";
@@ -269,6 +269,11 @@ function Home() {
         <h2>minute of their</h2>
         <img src={arrow} alt="" />
         <h2 className="live">lives</h2>
+      </div>
+
+      <div className="test">
+        <p>We don’t accept half-measures and shortcuts, because what we care about is the WOW effect. 
+          And all the lucl that our efforts <p className="centre">are not in vain. we know this because we closely follow the opinions of our cusumers.</p></p>
       </div>
 
       <div className="cards">
