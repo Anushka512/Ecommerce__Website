@@ -1,6 +1,7 @@
 
 import Logo from "../../Assets/Images/logo__sec.png";
-import { AiOutlineShoppingCart, AiOutlineHeart } from "react-icons/ai";
+import { AiOutlineShoppingCart, AiOutlineHeart,AiOutlineUser,AiOutlineSearch
+} from "react-icons/ai";
 import { BsFacebook, BsInstagram, BsTwitter } from "react-icons/bs";
 import "./Navbar.scss";
 
@@ -31,9 +32,10 @@ export default function Navbar({setToggleCart}) {
             ))}
           </ul>
           <div className="right">
+            <AiOutlineSearch/>
+            <AiOutlineHeart/>
             <AiOutlineShoppingCart onClick={setToggleCart} />
-            <AiOutlineHeart />
-            <AiOutlineHeart />
+            <AiOutlineUser/>
             <div className="auth">
               {/* <button className="btn cart">Login/Signup</button> */}
             </div>
