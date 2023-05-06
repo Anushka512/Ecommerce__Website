@@ -4,10 +4,13 @@ import CartImg from "../../Assets/Images/Cartitem.jpeg";
 import CartItem from "../CartItem/CartItem.js";
 import AddressBox from "../AddressBox/AddressBox.js";
 import { ProductData } from "../../Data/productsData";
+import {useSelector} from "react-redux"
 
 import "./Cart.scss";
 
 function Cart({ toggleCart, setToggleCart }) {
+  const { carts } = useSelector((state) => state.products);
+
   const [secondComp, setSecondComp] = useState(false);
   const [addressContainer, setAddressContainer] = useState(false);
 
@@ -64,27 +67,26 @@ function Cart({ toggleCart, setToggleCart }) {
 
           <div className="cart__del-info">
             <h5>Delivery in 10 minutes</h5>
-            <p className="p-text">3 Items</p>
+            <p className="p-text">{carts.length} Items</p>
           </div>
 
           <div className="item__container">
-            {ProductData.map((product, index) => (
+          {carts.map((product, index) => (
               <CartItem
                 id={product.id}
                 name={product.title}
                 imgUrl={CartImg}
                 price={product.price}
-                quantity={product.price}
+                quantity={product.quantity ? product.quantity : 1}
               />
             ))}
-           
             {/* <CartItem name="Item-1"  imgUrl={CartImg} price={50} quantity="500" />
       <CartItem name="Item-1"  imgUrl={CartImg} price={50} quantity="500" />
       <CartItem name="Item-1"  imgUrl={CartImg} price={50} quantity="500" /> */}
           </div>
 
           <div onClick={handleChangeComp} className="place__order">
-            <h5>3 Items . $130</h5>
+            <h5>{carts.length} Items . $130</h5>
             <h5>Proceed</h5>
           </div>
         </div>

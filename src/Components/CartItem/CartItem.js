@@ -4,15 +4,22 @@ import "./CarItem.scss";
 import { useSelector, useDispatch } from "react-redux";
 
 function CartItem({ name, imgUrl, quantity, price, id }) {
+  console.log("This is quantity", quantity)
   const dispatch = useDispatch();
-
+ 
   const addToCart = (id) => {
-    dispatch({ type: "ProductSlice/addToCart", payload: {id} });
+    dispatch({
+      type: "ProductSlice/updateCart",
+      payload: { val: Number(quantity) + 1, id },
+    });
   };
 
   const removeCart = (id) => {
-    dispatch({type : "ProductSlice/removeCart" ,payload : {id}});
-  }
+    dispatch({
+      type: "ProductSlice/updateCart",
+      payload: { val: Number(quantity) - 1, id },
+    });
+  };
 
 
   return (
@@ -30,7 +37,7 @@ function CartItem({ name, imgUrl, quantity, price, id }) {
 
           <div className="function">
             <span onClick={()=> removeCart(id)}>-</span>
-            <span>1</span>
+            <span>{quantity}</span>
             <span onClick={() => addToCart(id)}>+</span>
           </div>
         </div>

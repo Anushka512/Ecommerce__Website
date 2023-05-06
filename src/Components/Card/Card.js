@@ -1,11 +1,27 @@
 import React from "react";
 import "./Card.scss";
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
 // import { AiOutlineHeart, AiFillCheckCircle } from "react-icons/ai";
 
-function Card({ imgUrl, name, price, salePrice, category }) {
+function Card({ imgUrl, name, price, salePrice, category, id }) {
+  const dispatch = useDispatch();
+
+  const addToCart = (id) => {
+    dispatch({
+      type: "ProductSlice/addToCart",
+      payload: { id },
+    });
+  };
+
+  const removeCart = (id) => {
+    dispatch({
+      type: "ProductSlice/addToCart",
+      payload: { id },
+    });
+  };
   return (
-    <Link to="/product/dadadsad" className="Card">
+    <div className="Card">
       <div className="card__top">
         <p>
           <span>20%</span>
@@ -23,19 +39,16 @@ function Card({ imgUrl, name, price, salePrice, category }) {
 
         <div className="card__footer">
           <span className="card__price">
-            <p className="price">
-              ₹{price}
-            </p>
-            <p className="sale__price">
-              ₹{salePrice}
-            </p>
+            <p className="price">₹{price}</p>
+            <p className="sale__price">₹{salePrice}</p>
           </span>
 
-          <button className="btn">Add to cart</button>
+          <button onClick={() => addToCart(id)} className="btn">
+            Add to cart
+          </button>
         </div>
       </div>
-
-    </Link>
+    </div>
   );
 }
 
